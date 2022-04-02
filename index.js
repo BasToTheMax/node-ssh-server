@@ -36,10 +36,11 @@ new ssh2.Server({
       });
       session.once('shell', function(accept, reject, info) {
         var stream = accept();
-        done(stream);
 
-        stream.write(fs.readFileSync('./welcomeMessage.txt').toString());
-        stream.write('\r\n'.repeat(3));
+        out += fs.readFileSync('./welcomeMessage.txt').toString();
+        out += '\r\n'.repeat(3);
+
+        done(stream);
 
         stream.on('data', function(data) {
           don == true;
