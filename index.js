@@ -66,6 +66,9 @@ new ssh2.Server({
                     stream = undefined;
                     out = '';
                     break;
+                case "stop":
+                  process.exit();
+                  break;
                 case "clear":
                   out = '';
                   out += `$ ${args.join(' ')}\r\n`;
