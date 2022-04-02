@@ -1,5 +1,4 @@
 var fs = require('fs');
-var username = null;
 var ssh2 = require('ssh2');
 var chalk = require('chalk');
 
@@ -37,6 +36,10 @@ new ssh2.Server({
       });
       session.once('shell', function(accept, reject, info) {
         var stream = accept();
+
+        stream.write(fs.readFileSync('./welcomeMessage.txt').toString());
+        stream.write('\r\n'.repeat(3));
+
         done(stream);
         stream.on('data', function(data) {
           don == true;
@@ -96,6 +99,7 @@ new ssh2.Server({
       });
     });
   }).on('end', function() {
+    out = '';
     console.log(chalk.red('\t> Client disconnected'));
   }).on('error', function() {
     console.log(chalk.red('\t> Client error'));
