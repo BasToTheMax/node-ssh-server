@@ -21,7 +21,7 @@ new ssh2.Server({
       username = ctx.username;
     if (ctx.method === 'password')
     {
-      console.log(chalk.green(`\t> Client data | ${ctx.username} & "${ctx.password}"`));
+      console.log(chalk.green(`\t> Client data | ${chalk.blue(ctx.username)} & "${chalk.blue(ctx.password)}"`));
       ctx.accept();
     } else {
       ctx.reject();
@@ -66,6 +66,7 @@ new ssh2.Server({
                     don = false;
                     out += `$ ${args.join(' ')}\r\n`;
                     out += args[0] + ": No such command!\r\n";
+                    console.log(chalk.red(`^ Command not found!`));
                     break;
             }
 
