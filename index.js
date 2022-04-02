@@ -62,6 +62,10 @@ new ssh2.Server({
                     stream.end();
                     stream = undefined;
                     break;
+                case "clear":
+                  out = '';
+                  out += `$ ${args.join(' ')}\r\n`;
+                  break;
                 default:
                     don = false;
                     out += `$ ${args.join(' ')}\r\n`;
