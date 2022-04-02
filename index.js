@@ -61,6 +61,7 @@ new ssh2.Server({
                     stream.exit(0);
                     stream.end();
                     stream = undefined;
+                    out = '';
                     break;
                 case "clear":
                   out = '';
