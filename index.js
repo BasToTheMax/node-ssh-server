@@ -12,7 +12,7 @@ don = true;
 
 
 new ssh2.Server({
-  hostKeys: [fs.readFileSync('lol')]
+  hostKeys: [fs.readFileSync('lol.pub').toString()]
 }, function(client) {
   console.log(chalk.green('\t> Client connected!'));
 
